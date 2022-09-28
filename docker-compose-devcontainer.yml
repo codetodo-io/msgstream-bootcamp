@@ -1,0 +1,33 @@
+version: '3.5'
+
+services:
+  msgstream-bootcamp:
+    container_name: msgstream-bootcamp
+    image: liyaodev/msgstream-bootcamp-env:v1.0.0
+    # 本地构建
+    build:
+      context: .
+      dockerfile: build/docker/build_env/Dockerfile
+    ports:
+      - 8888:8888
+    environment:
+      - RABBITMQ_ADDRESS=${RABBITMQ_ADDRESS}
+    volumes:
+      - .:/www/server:delegated
+      - ${MSGSTREAM_BOOTCAMP_ROOT_DIR:-.}/volumes/vscode-extensions:/www/.vscode-server:delegated
+
+  rabbitmq:
+    container_name: msgstream-rabbitmq
+    image: rabbitmq:3.8.5-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+    volumes:
+      - ${MSGSTREAM_BOOTCAMP_ROOT_DIR:-.}/volumes/rabbitmq/data:/var/lib/rabbitmq
+
+networks:
+  default:
+    name: msgstream_bootcamp_dev
