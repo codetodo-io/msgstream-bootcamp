@@ -4,4 +4,5 @@
 
 * [优先级队列](./bootcamp/rabbitmq/priority_queue/)
 * [RPC 队列](./bootcamp/rabbitmq/rpc_queue/)
+* [延迟队列](./bootcamp/rabbitmq/delayed_queue/)
 
