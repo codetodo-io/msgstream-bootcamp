@@ -6,3 +6,7 @@
 * [RPC 队列](./bootcamp/rabbitmq/rpc_queue/)
 * [延迟队列](./bootcamp/rabbitmq/delayed_queue/)
 
+## ZeroMQ 系列
+
+* [PUB/SUB模式](./bootcamp/zeromq/pubsub/)
+
